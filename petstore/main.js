@@ -10,20 +10,35 @@ function displayPet(pet) {
     // Create HTML string for one pet
     // Include: name, type, age, and adoption status
     // Return the HTML string
-    let cssClass = pet.adopted ? "pet adopted" : "pet available"
-    let HTML = `<div class="${cssClass}>Name = ${pet.name}, 
-    Type of pet = ${pet.type}
-    Age = ${pet.age}
-    Is adopted = ${pet.adopted}</div>`;
+    let cssClass = pet.adopted ? "pet adopted" : "pet available";
+    let HTML = `<div class="${cssClass}">
+    <h2>Name = ${pet.name}</h2> 
+    <p>Type of pet = ${pet.type}</p>
+    <p>Age = ${pet.age}</p>
+    <p>Is adopted = ${pet.adopted}</p></div>`;
+    return HTML;
 }
 
-function showAllPets(){
-    let petspace;
-    pets.forEach(element => {
-        petspace += displayPet(element)
-    });
-    document.getElementById("pet-list").innerHTML = petspace;
+function showAllPets(pets){
+    //let petspace;
+    //pets.forEach(element => {
+        //petspace += displayPet(element)
+        //document.getElementById("pet-list").innerHTML = displayPet(element)
+    //});
+    //document.getElementById("pet-list").innerHTML = petspace;
+
+    //for( i = 0; i<pets.count; i++)
+    //{
+       //let html = document.getElementById("pet-list").innerHTML = displayPet(i)
+    //}
+    const container = document.getElementById("pet-list");
+    for ( const pet of pets)
+    {
+        console.log(pet);
+        container.innerHTML += displayPet(pet);
+    }
+
 
 }
 
-showAllPets();
+showAllPets(pets);
