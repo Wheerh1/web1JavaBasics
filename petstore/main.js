@@ -37,8 +37,17 @@ function showAllPets(pets){
         console.log(pet);
         container.innerHTML += displayPet(pet);
     }
+}
 
-
+function adoptPet(pets, petname)
+{
+    for( const pet of pets)
+    {
+        if (pet.name === petname)
+            pet.adopted = true;
+        showAllPets(pets)
+    }
 }
 
 showAllPets(pets);
+adoptPet(pets,"Maddie");
