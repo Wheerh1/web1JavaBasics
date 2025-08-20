@@ -71,13 +71,3 @@ function clickAdopt(e, pets)
 
 
 showAllPets(pets);
-// const btns = document.querySelectorAll("button");
-// console.log(btns)
-// for (const btn of btns) {
-//     btn.addEventListener("click", (e) => {
-        
-//         console.log(e)
-//         clickAdopt(e,pets)
-//     });
-//   }
-//adoptPet(pets,"Maddie");
