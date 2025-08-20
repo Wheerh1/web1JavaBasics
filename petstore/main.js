@@ -15,23 +15,15 @@ function displayPet(pet) {
     <h2>Name = ${pet.name}</h2> 
     <p>Type of pet = ${pet.type}</p>
     <p>Age = ${pet.age}</p>
-    <p>Is adopted = ${pet.adopted}</p></div>`;
+    <p>Is adopted = ${pet.adopted}</p>
+    <button id=${pet.name}>Adopt Me</button></div>`;
     return HTML;
 }
 
 function showAllPets(pets){
-    //let petspace;
-    //pets.forEach(element => {
-        //petspace += displayPet(element)
-        //document.getElementById("pet-list").innerHTML = displayPet(element)
-    //});
-    //document.getElementById("pet-list").innerHTML = petspace;
-
-    //for( i = 0; i<pets.count; i++)
-    //{
-       //let html = document.getElementById("pet-list").innerHTML = displayPet(i)
-    //}
+    
     const container = document.getElementById("pet-list");
+    container.innerHTML = ''
     for ( const pet of pets)
     {
         console.log(pet);
@@ -45,9 +37,37 @@ function adoptPet(pets, petname)
     {
         if (pet.name === petname)
             pet.adopted = true;
-        showAllPets(pets)
     }
+    //showAllPets(pets);
 }
 
+function clickAdopt(e, pets)
+{
+    petname = e.target.id
+    for( const pet of pets)
+        {
+            if (pet.name === petname)
+                pet.adopted = true;
+                console.log(pet.adopted)
+        }
+    showAllPets(pets)
+    console.log(petname);
+    console.log(e);
+    //petname = e.target.pet.name
+
+}
+
+
+
 showAllPets(pets);
-adoptPet(pets,"Maddie");
+const btns = document.querySelectorAll("button");
+console.log(btns)
+for (const btn of btns) {
+    btn.addEventListener("click", (e) => {
+        //e.target.pet.adopted = true;
+        //console.log([e.target.pet.name])
+        clickAdopt(e,pets)
+        console.log(e)
+    });
+  }
+//adoptPet(pets,"Maddie");
