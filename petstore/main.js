@@ -11,12 +11,13 @@ function displayPet(pet) {
     // Include: name, type, age, and adoption status
     // Return the HTML string
     let cssClass = pet.adopted ? "pet adopted" : "pet available";
+    let cssBtnClass = pet.adopted ? "hide" : "visible";
     let HTML = `<div class="${cssClass}">
     <h2>Name = ${pet.name}</h2> 
     <p>Type of pet = ${pet.type}</p>
     <p>Age = ${pet.age}</p>
     <p>Is adopted = ${pet.adopted}</p>
-    <button id=${pet.name}>Adopt Me</button></div>`;
+    <button class="${cssBtnClass}" id=${pet.name}>Adopt Me</button></div>`;
     return HTML;
 }
 
@@ -29,6 +30,16 @@ function showAllPets(pets){
         console.log(pet);
         container.innerHTML += displayPet(pet);
     }
+    //regen buttons
+    const btns = document.querySelectorAll("button");
+console.log(btns)
+for (const btn of btns) {
+    btn.addEventListener("click", (e) => {
+        
+        console.log(e)
+        clickAdopt(e,pets)
+    });
+  }
 }
 
 function adoptPet(pets, petname)
@@ -48,26 +59,25 @@ function clickAdopt(e, pets)
         {
             if (pet.name === petname)
                 pet.adopted = true;
-                console.log(pet.adopted)
+                console.log(pet.adopted);
         }
-    showAllPets(pets)
+    showAllPets(pets);
     console.log(petname);
-    console.log(e);
-    //petname = e.target.pet.name
+    //console.log(e);
+    
 
 }
 
 
 
 showAllPets(pets);
-const btns = document.querySelectorAll("button");
-console.log(btns)
-for (const btn of btns) {
-    btn.addEventListener("click", (e) => {
-        //e.target.pet.adopted = true;
-        //console.log([e.target.pet.name])
-        clickAdopt(e,pets)
-        console.log(e)
-    });
-  }
+// const btns = document.querySelectorAll("button");
+// console.log(btns)
+// for (const btn of btns) {
+//     btn.addEventListener("click", (e) => {
+        
+//         console.log(e)
+//         clickAdopt(e,pets)
+//     });
+//   }
 //adoptPet(pets,"Maddie");
