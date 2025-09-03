@@ -28,9 +28,10 @@ Make sure you use JavaScript to populate the card, not hardcoded HTML -->
         }
         
 
-        // Your JavaScript here - populate the card with book data - currently doesnt work
-        const bookcase = document.querySelector("book-card");
-        const mhHTML = document.createElement("div");
+        // Your JavaScript here - populate the card with book data - works
+        const bookcase = document.getElementById("book-card");
+        var myHTML = document.createElement("div");
+        // ↑this needs to be of type var
         myHTML.innerHTML = `<div>
             <img src="${book.imageUrl}" alt="book cover"></img>
 
@@ -38,6 +39,7 @@ Make sure you use JavaScript to populate the card, not hardcoded HTML -->
             <h3>${book.author}</h3>
             <p>pages:${book.pages}</p>
             </div>`;
+        console.log (myHTML)
         bookcase.appendChild(myHTML);
     </script>
 
